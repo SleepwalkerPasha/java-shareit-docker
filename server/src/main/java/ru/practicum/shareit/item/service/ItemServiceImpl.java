@@ -1,11 +1,11 @@
 package ru.practicum.shareit.item.service;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import ru.practicum.shareit.PageRequester;
 import ru.practicum.shareit.booking.dto.BookingDto;
 import ru.practicum.shareit.booking.repository.BookingRepository;
 import ru.practicum.shareit.exception.ConflictException;
@@ -221,13 +221,4 @@ public class ItemServiceImpl implements ItemService {
         }
     }
 
-    public static class PageRequester {
-        public static Pageable of(Integer from, Integer size) {
-            return of(from, size, Sort.unsorted());
-        }
-
-        public static Pageable of(Integer from, Integer size, Sort sort) {
-            return (from != null && size != null) ? PageRequest.of(from / size, size, sort) : null;
-        }
-    }
 }
