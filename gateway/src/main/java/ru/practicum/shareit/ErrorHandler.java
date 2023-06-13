@@ -23,7 +23,6 @@ public class ErrorHandler {
     }
 
     @ExceptionHandler
-    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
     public Map<String, String> handleServerError(final Throwable e) {
         log.error(e.getMessage());
         return Map.of("error", e.getMessage());
